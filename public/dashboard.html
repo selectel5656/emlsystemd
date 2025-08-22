@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Панель</title>
+  <style>
+    nav button { margin-right: 10px; }
+    .tab { display:none; }
+    .tab.active { display:block; }
+  </style>
+</head>
+<body>
+  <h2>Панель управления</h2>
+  <nav>
+    <button data-tab="letter">Письмо</button>
+    <button data-tab="emails">База e-mail</button>
+    <button data-tab="macros">Макросы</button>
+    <button data-tab="attachments">Аттачи</button>
+    <button data-tab="proxy">Прокси</button>
+    <button data-tab="accounts">Аккаунты API</button>
+    <a href="/logout">Выход</a>
+  </nav>
+  <section id="letter" class="tab active">
+    <h3>Отправка письма (заглушка)</h3>
+    <form id="letterForm">
+      <input name="subject" placeholder="Тема" required><br>
+      <textarea name="body" placeholder="Текст" rows="4"></textarea><br>
+      <input name="attachments" placeholder="ID вложений через запятую"><br>
+      <button type="submit">Отправить</button>
+    </form>
+    <pre id="letterResult"></pre>
+  </section>
+  <section id="emails" class="tab">
+    <h3>Загрузка базы e-mail</h3>
+    <form id="emailUpload" enctype="multipart/form-data">
+      <select name="format">
+        <option value="1">Имя &lt;login@domen.ru&gt;</option>
+        <option value="2">Имя &lt;login@domen.ru&gt;;</option>
+        <option value="3">login@domen.ru</option>
+      </select>
+      <input type="file" name="file" required>
+      <button type="submit">Загрузить</button>
+    </form>
+    <pre id="emailsResult"></pre>
+  </section>
+  <section id="macros" class="tab">
+    <h3>Макросы</h3>
+    <form id="macroForm">
+      <input name="name" placeholder="Имя" required>
+      <input name="value" placeholder="Значение" required>
+      <button type="submit">Добавить</button>
+    </form>
+    <ul id="macroList"></ul>
+  </section>
+  <section id="attachments" class="tab">
+    <h3>Вложения</h3>
+    <form id="attachUpload" enctype="multipart/form-data">
+      <input type="file" name="file" required>
+      <button type="submit">Загрузить</button>
+    </form>
+    <ul id="attachList"></ul>
+  </section>
+  <section id="proxy" class="tab">
+    <h3>Прокси</h3>
+    <form id="proxyUpload" enctype="multipart/form-data">
+      <input type="file" name="file" required>
+      <button type="submit">Загрузить</button>
+    </form>
+    <button id="nextProxy">Взять прокси</button>
+    <pre id="proxyDisplay"></pre>
+  </section>
+  <section id="accounts" class="tab">
+    <h3>Аккаунты API</h3>
+    <form id="accountUpload" enctype="multipart/form-data">
+      <input type="file" name="file" required>
+      <button type="submit">Загрузить</button>
+    </form>
+    <ul id="accountList"></ul>
+  </section>
+  <script src="/script.js"></script>
+</body>
+</html>
